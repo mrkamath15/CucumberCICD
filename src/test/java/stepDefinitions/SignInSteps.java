@@ -2,31 +2,33 @@ package stepDefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
+import utility.DriverFactory;
 
-public class SignInSteps extends MasterHooks {
+public class SignInSteps extends DriverFactory {
 
     @Given("user navigates to {string}")
     public void user_navigates_to_url( String appUrl) {
-        System.out.println("URL");
+        driver.get(appUrl);
     }
 
     @When("user enters username {string}")
     public void user_enters_username( String username) {
-        System.out.println("USERNAME");
+        signInModule.enter_username(username);
     }
 
     @When("user enters password {string}")
     public void user_enters_password( String password) {
-        System.out.println("PASSWORD");
+        signInModule.enter_password(password);
     }
 
     @When("user clicks on submit button")
     public void user_clicks_on_submit_button() {
-        System.out.println("SUBMIT");
+        signInModule.clickSubmit_button();
     }
 
     @When("user login is successful")
     public void user_login_is_successful() {
-        System.out.println("LOGIN");
+        Assert.assertTrue(loginSuccessPage.isLoginSuccessMessageDisplayed(), "Login Unsuccessful");
     }
 }
