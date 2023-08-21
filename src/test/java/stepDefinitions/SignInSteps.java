@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import utility.DriverFactory;
@@ -30,5 +31,10 @@ public class SignInSteps extends DriverFactory {
     @When("user login is successful")
     public void user_login_is_successful() {
         Assert.assertTrue(loginSuccessPage.isLoginSuccessMessageDisplayed(), "Login Unsuccessful");
+    }
+
+    @Then("login error message {string} is displayed")
+    public void login_error_message_is_displayed(String expectedText) {
+        Assert.assertEquals(signInModule.getLoginErrorMessage(), expectedText);
     }
 }

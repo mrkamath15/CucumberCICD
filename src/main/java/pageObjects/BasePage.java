@@ -54,6 +54,12 @@ public class BasePage extends DriverFactory {
         }
     }
 
+    public void waitAndClickWebElementNoAssert(WebElement element) {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+            logger.info("Successfully clicked the web element : " + element.toString());
+    }
+
     public String waitAndGetTextFromWebElement(WebElement element) {
         try {
             waitUntilWebElementIsVisible(element);
@@ -66,6 +72,16 @@ public class BasePage extends DriverFactory {
             e.printStackTrace();
             return "";
         }
+    }
 
+    public void waitAndSwitchToFrameByWebElement(WebElement element) {
+        try {
+            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+            logger.error("Successfully switched to frame : " + element.toString());
+        }
+        catch (Exception e) {
+            logger.error("Unable to switch to frame : " + element.toString() + ", Exception : " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
