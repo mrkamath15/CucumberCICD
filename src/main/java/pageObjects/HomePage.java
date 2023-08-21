@@ -98,7 +98,7 @@ public class HomePage extends BasePage {
         if(driver.getCurrentUrl().endsWith("google_vignette")) {
             waitAndSwitchToFrameByWebElement(advertisement_frame);
             try {
-                waitAndClickWebElementNoAssert(closeAd_button);
+                closeAd_button.click();
             }
             catch (Exception e) {
                 System.out.println("Unable to close Ad! Switching to Inner frame!!");

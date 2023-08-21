@@ -1,5 +1,6 @@
 package pageObjects;
 
+import com.aventstack.extentreports.Status;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,10 +20,12 @@ public class BasePage extends DriverFactory {
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
             logger.info("Element is visible : " + element.toString());
+            extentTest.log(Status.INFO, "Element is visible : " + element.toString());
             return true;
         }
         catch (Exception e) {
             logger.error("WebElement is not visible exception : " + e.getMessage());
+            extentTest.log(Status.FAIL,"WebElement is not visible exception : " + e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -34,9 +37,12 @@ public class BasePage extends DriverFactory {
             element.clear();
             element.sendKeys(text);
             logger.info("Successfully sent text : " + text + " to WebElement : " + element.toString());
+            extentTest.log(Status.INFO, "Successfully sent text : " + text + " to WebElement : " + element.toString());
+
         }
         catch (Exception e) {
             logger.error("Unable to send text : " + text + " to WebElement : " + element.toString() + " exception : " + e.getMessage());
+            extentTest.log(Status.FAIL, "Unable to send text : " + text + " to WebElement : " + element.toString() + " exception : " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -46,10 +52,11 @@ public class BasePage extends DriverFactory {
             wait.until(ExpectedConditions.elementToBeClickable(element));
             element.click();
             logger.info("Successfully clicked the web element : " + element.toString());
-
+            extentTest.log(Status.INFO, "Successfully clicked the web element : " + element.toString());
         }
         catch (Exception e) {
             logger.error("Unable to click the web element : " + element.toString() + " exception : " + e.getMessage());
+            extentTest.log(Status.FAIL, "Unable to click the web element : " + element.toString() + " exception : " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -65,10 +72,12 @@ public class BasePage extends DriverFactory {
             waitUntilWebElementIsVisible(element);
             String text = element.getText();
             logger.info("Successfully retrieved text : " + text + ", from webelement : " + element.toString());
+            extentTest.log(Status.INFO, "Successfully retrieved text : " + text + ", from webelement : " + element.toString());
             return text;
         }
         catch (Exception e) {
             logger.error("Unable to get text from web element : " + element.toString() + " exception : " + e.getMessage());
+            extentTest.log(Status.FAIL, "Unable to get text from web element : " + element.toString() + " exception : " + e.getMessage());
             e.printStackTrace();
             return "";
         }
@@ -78,9 +87,11 @@ public class BasePage extends DriverFactory {
         try {
             wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
             logger.info("Successfully switched to frame : " + element.toString());
+            extentTest.log(Status.INFO, "Successfully switched to frame : " + element.toString());
         }
         catch (Exception e) {
             logger.error("Unable to switch to frame : " + element.toString() + ", Exception : " + e.getMessage());
+            extentTest.log(Status.FAIL, "Unable to switch to frame : " + element.toString() + ", Exception : " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -89,9 +100,11 @@ public class BasePage extends DriverFactory {
         try {
             driver.switchTo().defaultContent();
             logger.info("Switched to default content");
+            extentTest.log(Status.INFO, "Switched to default content");
         }
         catch (Exception e) {
             logger.error("Unable to switch to default content");
+            extentTest.log(Status.FAIL, "Unable to switch to default content");
             e.printStackTrace();
         }
     }
