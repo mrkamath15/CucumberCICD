@@ -106,6 +106,7 @@ public class HomePage extends BasePage {
                 System.out.println("Switched to inner frame successfully");
                 waitAndClickWebElement(closeAd_button);
                 System.out.println("Closed the ad!!!");
+                switchToDefaultContent();
             }
         }
     }

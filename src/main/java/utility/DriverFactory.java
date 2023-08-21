@@ -7,10 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.PageFactory;
-import pageObjects.HomePage;
-import pageObjects.LoginSuccessPage;
-import pageObjects.RegisterPage;
-import pageObjects.SignInModule;
+import pageObjects.*;
 
 public class DriverFactory {
     public static WebDriver driver;
@@ -19,6 +16,8 @@ public class DriverFactory {
     public static LoginSuccessPage loginSuccessPage;
     public static HomePage homePage;
     public static RegisterPage registerPage;
+    public static UnderConstructionModule underConstructionModule;
+
     public static Logger logger = LogManager.getLogger();
 
     public DriverFactory() {
@@ -63,5 +62,6 @@ public class DriverFactory {
         loginSuccessPage = PageFactory.initElements(driver, LoginSuccessPage.class);
         homePage = PageFactory.initElements(driver, HomePage.class);
         registerPage = PageFactory.initElements(driver, RegisterPage.class);
+        underConstructionModule = PageFactory.initElements(driver, UnderConstructionModule.class);
     }
 }

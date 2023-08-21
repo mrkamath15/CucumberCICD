@@ -77,10 +77,21 @@ public class BasePage extends DriverFactory {
     public void waitAndSwitchToFrameByWebElement(WebElement element) {
         try {
             wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
-            logger.error("Successfully switched to frame : " + element.toString());
+            logger.info("Successfully switched to frame : " + element.toString());
         }
         catch (Exception e) {
             logger.error("Unable to switch to frame : " + element.toString() + ", Exception : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void switchToDefaultContent() {
+        try {
+            driver.switchTo().defaultContent();
+            logger.info("Switched to default content");
+        }
+        catch (Exception e) {
+            logger.error("Unable to switch to default content");
             e.printStackTrace();
         }
     }
