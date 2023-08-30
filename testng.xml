@@ -2,7 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Cucumber Automation Suite">
     <test name="Automation Test">
-        <parameter name="browser" value="CHROME" />
         <classes>
             <class name="runners.TestRunner" />
         </classes>
