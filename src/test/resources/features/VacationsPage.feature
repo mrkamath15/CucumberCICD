@@ -1,4 +1,5 @@
 Feature: Vacations page functionality
+
   @smoke
   Scenario: Vacations is under construction
     Given user navigates to "https://demo.guru99.com/test/newtours/index.php"
