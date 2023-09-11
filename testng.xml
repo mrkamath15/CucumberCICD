@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Cucumber Automation Suite">
-    <test name="Automation Test" parallel="tests">
+    <test name="Automation Test">
+    <parameter name="browser" value="IE" />
         <classes>
             <class name="runners.TestRunner" />
         </classes>
